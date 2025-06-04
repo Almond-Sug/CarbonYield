@@ -1,12 +1,30 @@
-# React + Vite
+# CarbonYield 🌍
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Symbolic Climate Contribution Platform** — fund verified carbon offset projects, earn symbolic credits, and reinvest your impact transparently.
 
-Currently, two official plugins are available:
+### 🔗 Live Demo
+[carbonyield.netlify.app](https://carbonyield.netlify.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🛠 Tech Stack
+- React + Vite
+- TailwindCSS v4
+- React Router DOM
+- Recharts, Mapbox
 
-## Expanding the ESLint configuration
+### 📸 Preview
+![Screenshot](public/Home_CarbonYield.png)
+![Screenshot](public/Marketplace_CarbonYield.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🚧 Roadmap
+- Symbolic reinvestment flow (in progress)
+- Dynamic project data from backend
+- OAuth user accounts
+
+---
+
+Let me know once you’ve done this, and I’ll help you:
+- Write your resume bullet point
+- Write a one-liner for LinkedIn
+- Draft a short post to share it as a portfolio highlight
+
+Would you like to proceed with that next?
