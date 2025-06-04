@@ -21,10 +21,3 @@
 - OAuth user accounts
 
 ---
-
-Let me know once you’ve done this, and I’ll help you:
-- Write your resume bullet point
-- Write a one-liner for LinkedIn
-- Draft a short post to share it as a portfolio highlight
-
-Would you like to proceed with that next?
