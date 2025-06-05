@@ -22,4 +22,7 @@ const App = () => (
   </Router>
 );
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+const container = document.getElementById('root');
+if (!container) throw new Error("Root container not found");
+ReactDOM.createRoot(container).render(<App />);
+

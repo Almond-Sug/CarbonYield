@@ -4,16 +4,18 @@ import mapboxgl from 'mapbox-gl';
 mapboxgl.accessToken = 'no-token-needed-for-public-style'; // placeholder
 
 export default function ImpactMap() {
-  const mapContainer = useRef(null);
+  const mapContainer = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'https://demotiles.maplibre.org/style.json', // Free public style
-      center: [-60, -3], // Amazon region
-      zoom: 3,
-      attributionControl: false,
-    });
+useEffect(() => {
+  if (!mapContainer.current) return; // ✅ prevent running if ref is null
+
+  const map = new mapboxgl.Map({
+    container: mapContainer.current, // now guaranteed to be non-null
+    style: 'https://demotiles.maplibre.org/style.json',
+    center: [-60, -3],
+    zoom: 3,
+    attributionControl: false,
+  });
 
     // Optional: Add fake geojson overlays for demo
     map.on('load', () => {
@@ -24,6 +26,7 @@ export default function ImpactMap() {
           features: [
             {
               type: 'Feature',
+              properties: {},
               geometry: {
                 type: 'Polygon',
                 coordinates: [[
