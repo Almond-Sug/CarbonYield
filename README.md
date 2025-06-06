@@ -6,7 +6,7 @@
 
 ## 🚀 Live Demo
 
-🌐 [carbonyield.netlify.app](https://www.carbonyield.net)  
+🌐 [www.carbonyield.net](https://www.carbonyield.net)  
 📂 [GitHub Repository](https://github.com/Almond-Sug/CarbonYield)
 
 ---
