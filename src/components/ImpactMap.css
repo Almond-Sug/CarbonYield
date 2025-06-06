@@ -1,0 +1,66 @@
+/* ImpactMap.css */
+
+.maplibregl-popup {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.maplibregl-popup-content {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.popup-title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #111827; /* gray-900 */
+  margin-bottom: 6px;
+}
+
+.popup-type {
+  font-size: 14px;
+  color: #059669;
+  margin-bottom: 4px;
+}
+
+.popup-status {
+  font-style: italic;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.popup-description {
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.popup-impact {
+  font-weight: 600;
+  color: #065f46;
+}
+
+/* Make the close button larger and easier to tap */
+.maplibregl-popup-close-button {
+  font-size: 20px !important;
+  line-height: 20px !important;
+  width: 32px !important;
+  height: 32px !important;
+  top: 8px !important;
+  right: 8px !important;
+  color: #374151 !important; /* Tailwind gray-700 */
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  z-index: 10;
+}
+
+/* Optional: Add hover effect */
+.maplibregl-popup-close-button:hover {
+  color: #111827 !important; /* Tailwind gray-900 */
+}

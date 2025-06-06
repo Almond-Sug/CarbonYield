@@ -1,109 +1,190 @@
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ImpactMap from '../components/ImpactMap';
 import CredibilitySection from '../components/CredibilitySection';
+import HowItWorksSection from '../components/HowItWorksSection';
+import RecognitionSection from '../components/RecognitionSection';
+import MissionSection from '../components/MissionSection';
 
 export default function LandingPage() {
   return (
-    <div className="max-w-7xl mx-auto px-6 py-24 flex flex-col gap-20 sm:gap-28">
-
-      {/* HERO SECTION */}
-      <section className="text-center space-y-6">
-        <h1 className="text-4xl sm:text-7xl font-extrabold text-green-700">CarbonYield</h1>
-        <h1 className="text-2xl sm:text-5xl font-extrabold text-green-700">
-          Fund Climate. Track Impact. Share the Win.
-        </h1>
-        <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-          Support verified carbon projects. Track your impact. Reinvest your symbolic credit into more change.
-        </p>
-        <Link
-          to="/marketplace"
-          className="inline-block bg-green-600 text-white px-6 py-3 rounded-xl text-lg hover:bg-green-700 transition"
-        >
-          Explore Projects
-        </Link>
+    <div className="bg-white text-gray-900">
+      {/* HERO */}
+      <section
+        className="relative flex items-center justify-center text-center min-h-screen px-6 sm:px-12"
+        style={{
+          backgroundImage: `url('/hero-background.jpeg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="bg-black bg-opacity-40 p-6 sm:p-12 rounded-xl max-w-2xl text-white">
+          <img src="/logo_carbonyield.png" alt="CarbonYield Logo" className="mx-auto mb-4 w-16" />
+          <h1 className="text-4xl sm:text-6xl font-bold mb-4 font-dm-sans">
+            Fund Climate. Track Impact.
+          </h1>
+          <p className="text-lg sm:text-xl mb-6 font-inter">
+            Back real carbon projects, see real impact, and earn symbolic rewards.
+          </p>
+          <Link
+            to="/dashboard"
+            className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition"
+          >
+            Get Started
+          </Link>
+        </div>
       </section>
 
-      {/* FEATURE TEASERS */}
-      <section className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-        <div className="flex flex-col items-center space-y-2">
-          <div className="text-green-600 text-3xl">✅</div>
-          <h3 className="text-xl font-semibold text-green-700">Verified Projects</h3>
-          <p className="text-sm text-gray-600">
-            All projects are certified by Verra, Gold Standard, or equivalent.
+      {/* WHAT IS CARBONYIELD */}
+      <section className="mt-20 text-center max-w-4xl mx-auto px-6 space-y-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-green-800">
+          Introducing a New Kind of Climate Platform
+        </h2>
+
+        <p className="text-gray-700 text-sm sm:text-base max-w-2xl mx-auto font-inter">
+          CarbonYield is part climate funding tool, part symbolic reinvestment engine. You support verified carbon credit projects, track resale activity, and receive symbolic credits that can be reinvested into future initiatives.
+        </p>
+
+        <p className="text-gray-700 text-sm sm:text-base max-w-2xl mx-auto font-inter">
+          It’s inspired by how investment platforms work — but for climate impact, not profit. No money comes back to you — only measurable progress.
+        </p>
+
+        <p className="text-sm text-green-700 font-medium">
+          <a href="/about" className="underline hover:text-green-800 transition">
+            Learn how CarbonYield works →
+          </a>
+        </p>
+      </section>
+
+      {/* WHY CARBONYIELD WORKS */}
+      <section className="bg-green-50 py-20 mt-28">
+        <div className="max-w-5xl mx-auto px-6 text-center space-y-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-green-800">
+            What CarbonYield Offers
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              {
+                icon: '✅',
+                title: 'Verified Projects',
+                desc: 'Every project is vetted through Verra, Gold Standard, or similar — ensuring measurable climate impact.',
+              },
+              {
+                icon: '🎖️',
+                title: 'Symbolic Rewards',
+                desc: 'Track your estimated carbon offset. Earn badges, titles, and reinvestment points.',
+              },
+              {
+                icon: '🔎',
+                title: 'Full Transparency',
+                desc: 'See credit resale details — buyer, price, and status — with no greenwashing.',
+              },
+            ].map(({ icon, title, desc }, i) => (
+              <div
+                key={i}
+                className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transform transition duration-200 space-y-3 flex flex-col items-center"
+              >
+                <div className="text-4xl h-12 flex items-center justify-center">{icon}</div>
+                <h3 className="text-lg font-semibold text-green-700">{title}</h3>
+                <p className="text-sm text-gray-600">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* SYMBOLIC REINVESTMENT HIGHLIGHT */}
+      <section className="mt-32 bg-white px-6 py-24 text-center max-w-5xl mx-auto space-y-10">
+        <h2 className="text-2xl sm:text-3xl font-bold text-green-800">
+          A Climate Platform That Gives Back — Even After You Give
+        </h2>
+
+        <p className="text-gray-700 text-sm sm:text-base max-w-3xl mx-auto font-inter">
+          When you support a carbon project on CarbonYield, you're not making a one-time donation —
+          you're becoming part of a reinvestment loop. As the credits you helped fund are resold,
+          you earn symbolic Impact Points that let you fund more change — without spending more.
+        </p>
+
+        {/* Image (Need to make it better) */}
+        <div className="flex justify-center">
+          <img
+            src="/Symbolic-Loop-Diagram.png"
+            alt="Symbolic Reinvestment Loop"
+            className="w-full max-w-xl rounded-xl shadow-md"
+          />
+        </div>
+
+        <p className="text-gray-600 text-sm italic">
+          No securities. No profit promises. Just real, visible impact that compounds over time.
+        </p>
+      </section>
+
+
+
+      {/* HOW IT WORKS */}
+      <HowItWorksSection />
+
+      {/* IMPACT MAP */}
+      <section className="py-28 bg-white px-6 sm:px-12 text-center space-y-10">
+        <div className="max-w-4xl mx-auto space-y-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-green-800">
+            🌍 Where Carbon is Stored — and Where You Can Help
+          </h2>
+          <p className="text-gray-700 text-sm sm:text-base font-inter">
+            The map below highlights sample high-impact regions — including forests, wetlands,
+            and community sequestration projects. In future versions, users will be able to
+            explore exactly how their support affects global CO₂ removal.
           </p>
         </div>
-        <div className="flex flex-col items-center space-y-2">
-          <div className="text-green-600 text-3xl">🎖️</div>
-          <h3 className="text-xl font-semibold text-green-700">Symbolic Rewards</h3>
-          <p className="text-sm text-gray-600">
-            Earn badges and track your estimated carbon offset journey.
-          </p>
-        </div>
-        <div className="flex flex-col items-center space-y-2">
-          <div className="text-green-600 text-3xl">🔎</div>
-          <h3 className="text-xl font-semibold text-green-700">Full Transparency</h3>
-          <p className="text-sm text-gray-600">
-            See real resale data — buyers, amounts, and retirement status.
-          </p>
-        </div>
-      </section>
 
-      {/* SYMBOLIC LOOP CALLOUT */}
-      <section className="bg-green-50 rounded-xl px-6 py-10 shadow max-w-4xl mx-auto text-center space-y-4">
-        <h2 className="text-2xl font-bold text-green-800">Why Symbolic Reinvestment?</h2>
-        <p className="text-gray-700 text-sm max-w-2xl mx-auto">
-          CarbonYield is not a donation platform — and not a financial one either.
-          It’s a new kind of climate accelerator. When the credits you helped fund are resold,
-          you get symbolic credits back. No money, just impact. Use those symbolic credits
-          to re-fund more carbon projects and grow your impact over time.
-        </p>
-        <p className="text-xs text-gray-600 italic">
-          You don't earn financial returns — but you do build a transparent, compounding climate legacy.
-        </p>
-      </section>
-
-      {/* HOW IT WORKS (CARD STYLE) */}
-      <section className="space-y-8 text-center">
-        <h2 className="text-2xl font-bold text-green-800">How CarbonYield Works</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
-          <div className="bg-white rounded-xl p-6 shadow space-y-2">
-            <h4 className="font-semibold text-green-700">1. Micro-Fund Projects</h4>
-            <p className="text-sm text-gray-700">
-              Choose from verified carbon offset projects. Fund as little as $10.
-            </p>
-          </div>
-          <div className="bg-white rounded-xl p-6 shadow space-y-2">
-            <h4 className="font-semibold text-green-700">2. Track Symbolic Yield</h4>
-            <p className="text-sm text-gray-700">
-              Monitor your offset estimates, project updates, and resale logs.
-            </p>
-          </div>
-          <div className="bg-white rounded-xl p-6 shadow space-y-2">
-            <h4 className="font-semibold text-green-700">3. Share & Reinvest</h4>
-              <p className="text-sm text-gray-700">
-                When credits are resold, you earn symbolic Impact Points. Use them to re-fund new projects and keep the cycle going.
-              </p>
-          </div>
+        {/* Interactive Map */}
+        <div className="max-w-5xl mx-auto">
+          <ImpactMap />
         </div>
-      </section>
 
-      {/* IMPACT MAP SECTION */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-bold text-green-800 text-center">🌍 Where Carbon is Stored—And Where You Can Help</h2>
-        <p className="text-center text-gray-600 max-w-2xl mx-auto">
-          The map below highlights high-impact regions like forests, grasslands, and urban areas.
-          In future versions, users will be able to explore how their funding affects global CO₂ levels.
+        {/* Optional CTA */}
+        <p className="text-sm text-gray-600 italic">
+          Future versions will include real-time credit tracking and location impact overlays.
         </p>
-        <ImpactMap />
       </section>
 
       {/* CREDIBILITY SECTION */}
       <CredibilitySection />
 
-      <footer className="mt-28 border-t pt-6 text-center text-sm text-gray-500">
-        Built by Almond Sugumalwang | CarbonYield v1.0 | MIT License
-      </footer>
+      {/* RECOGNITION SECTION */}
+      <RecognitionSection />
 
+      {/* MISSION & IMPACT STATS */}
+      <MissionSection />
+
+      {/* EMAIL SIGN-UP CTA */}
+      <section className="py-20 bg-green-600 text-white px-6 sm:px-12 text-center">
+        <h2 className="text-3xl font-bold font-dm-sans mb-4">Join the Movement</h2>
+        <p className="mb-6 max-w-xl mx-auto font-inter">
+          Want to be part of the future of climate impact? Join our updates list.
+        </p>
+        <form className="flex flex-col sm:flex-row justify-center gap-4 max-w-xl mx-auto">
+          <input
+            type="email"
+            placeholder="you@example.com"
+            className="px-4 py-3 rounded-md text-gray-900 w-full sm:w-auto"
+          />
+          <button
+            type="submit"
+            className="bg-white text-green-700 px-6 py-3 rounded-md font-semibold hover:bg-green-100 transition"
+          >
+            Keep Me Posted
+          </button>
+        </form>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="py-10 text-center text-sm text-gray-500 bg-gray-100 font-inter">
+        <p>© {new Date().getFullYear()} CarbonYield. Symbolic impact only — no financial returns implied.</p>
+        <p className="mt-1">Built with love, transparency, and Tailwind CSS.</p>
+      </footer>
     </div>
   );
 }

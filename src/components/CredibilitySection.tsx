@@ -1,38 +1,50 @@
+import { CheckCircle, ShieldCheck, TrendingUp } from "lucide-react"; // or replace with your own icons
+
 export default function CredibilitySection() {
   return (
-    <section className="max-w-5xl mx-auto px-6 py-16 space-y-6 bg-green-50 rounded-xl shadow mt-20">
-      <h2 className="text-2xl font-bold text-green-800 text-center">
-        🔐 Our Commitment to Transparency and Ethics
-      </h2>
+    <section className="bg-green-50 py-20 px-6 mt-16">
+      <div className="max-w-4xl mx-auto text-center space-y-4">
+        <h2 className="text-3xl font-bold text-green-800">Built for Climate Trust</h2>
+        <p className="text-gray-700 text-base max-w-xl mx-auto">
+          CarbonYield is designed for ethical, transparent impact — verified by third parties, powered by symbolic yield, and guided by real-world feedback.
+        </p>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-700">
-        <div>
-          <h3 className="font-semibold text-green-600 mb-1">Third-Party Certification</h3>
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto text-center text-sm text-gray-700">
+        <div className="space-y-3 px-4">
+          <ShieldCheck className="mx-auto text-green-600 w-8 h-8" />
+          <h3 className="font-semibold text-green-700">Verified Projects</h3>
           <p>
-            All supported projects meet rigorous standards such as Verra and Gold Standard,
-            ensuring measurable CO₂ offset validation and audit trails.
+            Every listed project meets standards like <strong>Verra</strong> or <strong>Gold Standard</strong>, with transparent offset tracking.
           </p>
         </div>
 
-        <div>
-          <h3 className="font-semibold text-green-600 mb-1">Symbolic Yield, Not Financial Return</h3>
+        <div className="space-y-3 px-4">
+          <TrendingUp className="mx-auto text-green-600 w-8 h-8" />
+          <h3 className="font-semibold text-green-700">Symbolic Yield Model</h3>
           <p>
-            Users earn symbolic credits tied to project resale activity. These are reinvestable,
-            non-monetary points used to support future initiatives — not financial investments.
+            Earn reinvestable points — not speculative assets. Climate impact is symbolic, traceable, and reinvested, not monetized.
           </p>
         </div>
 
-        <div>
-          <h3 className="font-semibold text-green-600 mb-1">Future Roadmap</h3>
+        <div className="space-y-3 px-4">
+          <CheckCircle className="mx-auto text-green-600 w-8 h-8" />
+          <h3 className="font-semibold text-green-700">Roadmap Transparency</h3>
           <p>
-            CarbonYield is currently a symbolic impact tool. A future phase ("CarbonYield Plus")
-            may allow broader nonprofit or hybrid use. Your feedback and support guide this evolution.
+            Open to nonprofit expansion. “CarbonYield Plus” is shaped by user trust, not investor demands.
           </p>
         </div>
       </div>
 
-      <p className="text-xs text-gray-600 italic text-center mt-4">
-        CarbonYield is a transparency-first climate tool. We're committed to ethical design, visible impact, and no greenwashing.
+      {/* Optional: Trust logos row */}
+      <div className="mt-10 flex flex-wrap justify-center items-center gap-6 opacity-80">
+        <img src="/verra-logo.png" alt="Verra" className="h-6" />
+        <img src="/goldstandard-logo.png" alt="Gold Standard" className="h-6" />
+        {/* You can also add GitHub / open-source / IRS nonprofit icon if relevant */}
+      </div>
+
+      <p className="text-xs text-gray-600 italic text-center mt-8 max-w-lg mx-auto">
+        Radical climate transparency. No greenwashing. No financial speculation. Just real, symbolic reinvestment.
       </p>
     </section>
   );

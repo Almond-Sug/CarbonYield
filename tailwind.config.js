@@ -9,6 +9,10 @@ export default {
   },
   plugins: [],
   corePlugins: {
-    preflight: true, // ✅ ENABLE preflight
+    preflight: true,
+  },
+  fontFamily: {
+  'dm-sans': ['"DM Sans"', 'sans-serif'],
+  'inter': ['Inter', 'sans-serif'],
   },
 }
