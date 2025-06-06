@@ -1,0 +1,98 @@
+.heroContainer {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 72px); /* Already fixed height */
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  max-width: 1600px; /* constrain on ultra-wide screens */
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  background-image: url('/hero-background.jpeg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4), transparent);
+  z-index: 1;
+}
+
+.heroTextBlock {
+  position: absolute;
+  top: 33%; /* previously 38% — this centers vertically in the visible circle */
+  left: 53.5%; /* nudge it into the visual loop center */
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  max-width: 80vw;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .heroTextBlock {
+    max-width: 500px;
+  }
+}
+
+
+.heroShadowText {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.heroButton {
+  background-color: #16a34a; /* Tailwind green-600 */
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.heroButton:hover {
+  background-color: #15803d; /* Tailwind green-700 */
+  transform: scale(1.05);
+}
+
+.heroEarthLogo {
+  position: absolute;
+  top: 26%;
+  left: 2%;
+  width: 400px;
+  max-width: 30vw;
+  z-index: 2;
+  border-radius: 1rem; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 640px) {
+  .heroEarthLogo {
+    width: 140px;
+    left: 4%;
+    top: 12%;
+  }
+}
+
+.heroEarthFilter {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0.1), transparent);
+  filter: brightness(1.2);
+  z-index: 1;
+  pointer-events: none;
+}
