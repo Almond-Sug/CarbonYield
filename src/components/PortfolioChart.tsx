@@ -8,7 +8,7 @@ const data = [
 
 export default function PortfolioChart() {
   return (
-    <div className="bg-white border p-6 rounded-xl shadow max-w-2xl mx-auto space-y-3">
+    <div className="space-y-3">
       <h2 className="text-xl font-bold text-green-700 text-center">📊 Your Symbolic Impact Over Time</h2>
 
       <ResponsiveContainer width="100%" height={300}>
