@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard';
 import Marketplace from './pages/Marketplace';
 import About from './pages/About';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import FAQPage from './pages/FAQPage'
 
 const App = () => (
   <Router>
@@ -19,6 +20,7 @@ const App = () => (
         <Route path="/marketplace" element={<Marketplace />} />
         <Route path="/about" element={<About />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/faq" element={<FAQPage />} />
       </Route>
     </Routes>
   </Router>

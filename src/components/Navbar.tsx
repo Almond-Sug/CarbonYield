@@ -6,9 +6,10 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Dashboard', path: '/dashboard' },
-    { name: 'Marketplace', path: '/marketplace' },
     { name: 'About', path: '/about' },
+    { name: 'Marketplace', path: '/marketplace' },
+    { name: 'Dashboard', path: '/dashboard' },
+    { name: 'FAQ', path: '/faq' },
   ];
 
   return (

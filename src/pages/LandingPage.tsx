@@ -148,6 +148,7 @@ export default function LandingPage() {
           <p>© {new Date().getFullYear()} CarbonYield. Symbolic impact only — no financial returns implied.</p>
           <p className="mt-1">Built with love, transparency, and Tailwind CSS.</p>
           <p className="mt-1">
+            <a href="/faq" className="text-blue-600 hover:underline">FAQ</a> •{" "}
             <a href="/privacy-policy" className="text-blue-600 hover:underline">Privacy Policy</a>
           </p>
         </footer>
