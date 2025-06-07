@@ -81,6 +81,7 @@ export default function ImpactMap() {
   const [region, setRegion] = useState('All Regions');
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isMapReady, setIsMapReady] = useState(false);
+  const [isSourceReady, setIsSourceReady] = useState(false);
   const initialLoad = useRef(true);
 
   const regionSettings: Record<string, { center: [number, number]; zoom: number }> = {
@@ -104,6 +105,32 @@ export default function ImpactMap() {
     mapRef.current = map;
 
     map.on('load', () => {
+      map.addSource('projects', {
+        type: 'geojson',
+        data: filterFeatures(region),
+      });
+
+      map.addLayer({
+        id: 'projects-fill',
+        type: 'fill',
+        source: 'projects',
+        paint: {
+          'fill-color': '#34D399',
+          'fill-opacity': 0.5,
+        },
+      });
+
+      map.addLayer({
+        id: 'projects-outline',
+        type: 'line',
+        source: 'projects',
+        paint: {
+          'line-color': '#059669',
+          'line-width': 2,
+        },
+      });
+
+      setIsSourceReady(true);
       setTimeout(() => setIsMapReady(true), 300);
 
       map.addSource('projects', {
@@ -160,7 +187,7 @@ export default function ImpactMap() {
 
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || !map.isStyleLoaded()) return;
+    if (!map || !map.isStyleLoaded() || !isSourceReady) return;
 
     const source = map.getSource('projects') as maplibregl.GeoJSONSource;
     if (source) {
@@ -177,7 +204,7 @@ export default function ImpactMap() {
     } else {
       initialLoad.current = false;
     }
-  }, [region]);
+  }, [region, isSourceReady]);
 
   function filterFeatures(region: string): FeatureCollection<Polygon> {
     if (region === 'All Regions') return allProjects;
