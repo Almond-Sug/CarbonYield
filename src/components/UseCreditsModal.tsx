@@ -1,15 +1,23 @@
-// Updated UseCreditsModal.tsx
-import { useState } from "react";
+// Fully dynamic UseCreditsModal.tsx with live Firestore project data
+import { useEffect, useState } from "react";
+import { useProjects } from "../hooks/useProjects";
 
 interface Props {
   symbolicCredits: number;
   onClose: () => void;
-  onRedeem: (amount: number, project: string) => void;
+  onRedeem: (amount: number, projectId: string) => void;
 }
 
 export default function UseCreditsModal({ symbolicCredits, onClose, onRedeem }: Props) {
+  const { projects, loading } = useProjects();
   const [selectedAmount, setSelectedAmount] = useState(5);
-  const [selectedProject, setSelectedProject] = useState("reforest_kenya");
+  const [selectedProject, setSelectedProject] = useState("");
+
+  useEffect(() => {
+    if (!loading && projects.length > 0) {
+      setSelectedProject(projects[0].id); // default to first project
+    }
+  }, [loading, projects]);
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
@@ -30,21 +38,22 @@ export default function UseCreditsModal({ symbolicCredits, onClose, onRedeem }: 
         />
 
         <select
-            className="w-full border border-gray-300 rounded-md p-2"
-            value={selectedProject}
-            onChange={(e) => setSelectedProject(e.target.value)}
-            >
-            {[
-                { id: "green_roof_nyc", name: "NYC Green Roof Program" },
-                { id: "reforest_kenya", name: "Reforest Kenya Initiative" },
-            ].map((project) => (
-                <option key={project.id} value={project.id}>{project.name}</option>
-            ))}
+          className="w-full border border-gray-300 rounded-md p-2"
+          value={selectedProject}
+          onChange={(e) => setSelectedProject(e.target.value)}
+        >
+          {projects.map((project) => (
+            <option key={project.id} value={project.id}>
+              {project.name}
+            </option>
+          ))}
         </select>
 
-
         <div className="flex gap-2 justify-end pt-2">
-          <button onClick={onClose} className="px-4 py-2 bg-gray-100 rounded-md text-gray-700">
+          <button
+            onClick={onClose}
+            className="px-4 py-2 bg-gray-100 rounded-md text-gray-700"
+          >
             Cancel
           </button>
           <button
@@ -55,7 +64,11 @@ export default function UseCreditsModal({ symbolicCredits, onClose, onRedeem }: 
                 onRedeem(selectedAmount, selectedProject);
               }
             }}
-            disabled={selectedAmount > symbolicCredits || selectedAmount < 1}
+            disabled={
+              selectedAmount > symbolicCredits ||
+              selectedAmount < 1 ||
+              !selectedProject
+            }
             className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50"
           >
             Redeem

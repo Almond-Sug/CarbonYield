@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../firebase";
-import { auth } from "../firebase";
+import { db, auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 export function useUserImpact(refreshTrigger?: boolean) {
   const [impact, setImpact] = useState({
@@ -23,10 +23,19 @@ export function useUserImpact(refreshTrigger?: boolean) {
   });
 
   useEffect(() => {
-    async function fetchData() {
-      const user = auth.currentUser;
-      if (!user) return;
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        setImpact((prev) => ({ ...prev, loading: false }));
+        return;
+      }
+      fetchData(user);
+    });
 
+    return () => unsubscribe();
+  }, [refreshTrigger]);
+
+  async function fetchData(user: any) {
+    try {
       const contributionsQuery = query(
         collection(db, "contributions"),
         where("userId", "==", user.uid)
@@ -84,10 +93,11 @@ export function useUserImpact(refreshTrigger?: boolean) {
         redemptions,
         loading: false,
       });
+    } catch (err) {
+      console.error("🔥 useUserImpact fetch error:", err);
+      setImpact((prev) => ({ ...prev, loading: false }));
     }
-
-    fetchData();
-  }, [refreshTrigger]);
+  }
 
   return impact;
 }

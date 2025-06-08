@@ -1,19 +1,13 @@
-import { useEffect, useState } from "react";
-import { getProjects } from "../firestore";
-import { submitContribution } from "../firestore";
 import { auth } from "../firebase";
-
+import { submitContribution } from "../firestore";
+import { useProjects } from "../hooks/useProjects";
 
 export default function Marketplace() {
-  const [projects, setProjects] = useState<any[]>([]);
+  const { projects, loading } = useProjects();
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getProjects();
-      setProjects(data);
-    }
-    fetchData();
-  }, []);
+  if (loading) {
+    return <div className="text-center text-gray-500 py-24">Loading projects...</div>;
+  }
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-24 space-y-10">
@@ -28,39 +22,32 @@ export default function Marketplace() {
 
             <ul className="text-sm text-gray-700 space-y-1">
               <li><strong>Verified:</strong> {project.verified ? "Yes" : "No"}</li>
-              <li><strong>Offset Estimate: {project.tonsEstimated ? `${project.tonsEstimated} tons CO₂` : "Not yet available"}</strong></li>
+              <li><strong>Offset Estimate:</strong> {project.tonsEstimated ? `${project.tonsEstimated} tons CO₂` : "Not yet available"}</li>
               <li><strong>Last Resale:</strong> {project.lastResale ?? "N/A"}</li>
             </ul>
 
-            {project.funded ? (
-              <button className="bg-gray-400 text-white px-4 py-2 rounded-md cursor-not-allowed">
-                Already Supported
-              </button>
-            ) : (
-              <button
-                onClick={async () => {
-                  const user = auth.currentUser;
-                  if (!user) {
-                    alert("Please log in first.");
-                    return;
-                  }
+            <button
+              onClick={async () => {
+                const user = auth.currentUser;
+                if (!user) {
+                  alert("Please log in first.");
+                  return;
+                }
 
-                  const success = await submitContribution({
-                    userId: user.uid,
-                    projectId: project.id,
-                    amount: 25, // hardcoded for now
-                  });
+                const success = await submitContribution({
+                  userId: user.uid,
+                  projectId: project.id,
+                  amount: 25, // hardcoded for now
+                });
 
-                  if (success) {
-                    alert("Thanks for supporting this project!");
-                  }
-                }}
-                className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
-              >
-                Symbolically Support
-              </button>
-
-            )}
+                if (success) {
+                  alert("Thanks for supporting this project!");
+                }
+              }}
+              className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
+            >
+              Symbolically Support
+            </button>
 
             <p className="text-xs text-gray-500 italic">
               Your contribution funds this project's verified carbon offset generation. Symbolic credits will be issued once resale occurs.
