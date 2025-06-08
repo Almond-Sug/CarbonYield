@@ -1,9 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { auth, provider } from '../firebase';
+import { signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
 import { NavLink, Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState<any | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogin = () => {
+    signInWithPopup(auth, provider).catch(console.error);
+  };
+
+  const handleLogout = () => {
+    signOut(auth).catch(console.error);
+  };
+
 
   const navItems = [
     { name: 'About', path: '/about' },
@@ -42,12 +61,13 @@ export default function Navbar() {
               {name}
             </NavLink>
           ))}
-          <Link
-            to="/login"
+          <button
+            onClick={user ? handleLogout : handleLogin}
             className="ml-4 text-sm sm:text-base font-semibold text-green-700 border border-green-600 rounded-md px-4 py-2 hover:bg-green-50 transition"
           >
-            Log In
-          </Link>
+            {user ? `Log Out (${user.displayName?.split(' ')[0]})` : 'Log In'}
+          </button>
+
         </div>
 
         {/* Mobile Menu Button */}
@@ -76,13 +96,16 @@ export default function Navbar() {
               {name}
             </NavLink>
           ))}
-          <Link
-            to="/login"
-            onClick={() => setMenuOpen(false)}
+          <button
+            onClick={() => {
+              setMenuOpen(false);
+              user ? handleLogout() : handleLogin();
+            }}
             className="inline-block mt-2 text-sm font-semibold text-green-700 border border-green-600 rounded-md px-4 py-2 hover:bg-green-50 transition"
           >
-            Log In
-          </Link>
+            {user ? `Log Out (${user.displayName?.split(' ')[0]})` : 'Log In'}
+          </button>
+
         </div>
       )}
     </nav>
