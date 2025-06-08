@@ -28,7 +28,7 @@ export default function Marketplace() {
 
             <ul className="text-sm text-gray-700 space-y-1">
               <li><strong>Verified:</strong> {project.verified ? "Yes" : "No"}</li>
-              <li><strong>Offset Estimate:</strong> {project.tonsEstimated} tons CO₂</li>
+              <li><strong>Offset Estimate: {project.tonsEstimated ? `${project.tonsEstimated} tons CO₂` : "Not yet available"}</strong></li>
               <li><strong>Last Resale:</strong> {project.lastResale ?? "N/A"}</li>
             </ul>
 
