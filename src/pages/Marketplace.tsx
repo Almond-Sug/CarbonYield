@@ -1,25 +1,17 @@
-const projects = [
-  {
-    id: 1,
-    name: 'Rainforest Regeneration - Brazil',
-    certification: 'Verra',
-    offsetCapacity: 120,
-    resaleDate: 'Q3 2025',
-    lastResale: 'May 2025',
-    funded: true,
-  },
-  {
-    id: 2,
-    name: 'Urban Solar Co-Op - Kenya',
-    certification: 'Gold Standard',
-    offsetCapacity: 80,
-    resaleDate: 'TBD',
-    lastResale: 'April 2025',
-    funded: false,
-  },
-];
+import { useEffect, useState } from "react";
+import { getProjects } from "../firestore";
 
 export default function Marketplace() {
+  const [projects, setProjects] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getProjects();
+      setProjects(data);
+    }
+    fetchData();
+  }, []);
+
   return (
     <div className="max-w-5xl mx-auto px-6 py-24 space-y-10">
       <h1 className="text-4xl font-extrabold text-green-700 text-center mb-8">
@@ -32,10 +24,9 @@ export default function Marketplace() {
             <h2 className="text-xl font-bold text-green-800">{project.name}</h2>
 
             <ul className="text-sm text-gray-700 space-y-1">
-              <li><strong>Certification:</strong> {project.certification}</li>
-              <li><strong>Offset Potential:</strong> {project.offsetCapacity} tons CO₂</li>
-              <li><strong>Last Resale:</strong> {project.lastResale}</li>
-              <li><strong>Next Expected Resale:</strong> {project.resaleDate}</li>
+              <li><strong>Verified:</strong> {project.verified ? "Yes" : "No"}</li>
+              <li><strong>Offset Estimate:</strong> {project.tonsEstimated} tons CO₂</li>
+              <li><strong>Last Resale:</strong> {project.lastResale ?? "N/A"}</li>
             </ul>
 
             {project.funded ? (
