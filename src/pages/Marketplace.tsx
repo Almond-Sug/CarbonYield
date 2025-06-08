@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { getProjects } from "../firestore";
+import { submitContribution } from "../firestore";
+import { auth } from "../firebase";
+
 
 export default function Marketplace() {
   const [projects, setProjects] = useState<any[]>([]);
@@ -34,9 +37,29 @@ export default function Marketplace() {
                 Already Supported
               </button>
             ) : (
-              <button className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition">
+              <button
+                onClick={async () => {
+                  const user = auth.currentUser;
+                  if (!user) {
+                    alert("Please log in first.");
+                    return;
+                  }
+
+                  const success = await submitContribution({
+                    userId: user.uid,
+                    projectId: project.id,
+                    amount: 25, // hardcoded for now
+                  });
+
+                  if (success) {
+                    alert("Thanks for supporting this project!");
+                  }
+                }}
+                className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
+              >
                 Symbolically Support
               </button>
+
             )}
 
             <p className="text-xs text-gray-500 italic">
