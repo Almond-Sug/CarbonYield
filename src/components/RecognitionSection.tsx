@@ -11,12 +11,12 @@ export default function SymbolicYieldSection() {
     {
       icon: <Eye className="w-8 h-8 text-green-600" />,
       title: "Visible Impact",
-      desc: "Symbolic yield tracks verified project resale activity and real carbon offsets.",
+      desc: "Track resale activity and verified climate impact — symbolically represented through Impact Credits.",
     },
     {
       icon: <Repeat className="w-8 h-8 text-green-600" />,
-      title: "Reinvestable Support",
-      desc: "Your symbolic credits can go toward future climate projects you believe in.",
+      title: "Support the Next Cycle",
+      desc: "After resale, you guide where support flows next — symbolically, not financially.",
     },
   ];
 
@@ -30,10 +30,10 @@ export default function SymbolicYieldSection() {
       }}
     >
       <h2 className="text-3xl font-bold mb-4 font-dm-sans text-green-800">
-        Symbolic Yield: Real Recognition, Ethical Design
+        Visible Impact. Trusted Recognition. Ethically Designed.
       </h2>
       <p className="text-gray-600 mb-14 font-inter max-w-2xl mx-auto">
-        As the projects you back succeed, you earn symbolic credits — proof of your contribution, reinvested to deepen your impact.
+        When credits are resold, you receive Impact Credits — proof of your contribution and a way to support future projects symbolically.
       </p>
 
       {/* Animated Benefit Cards */}
@@ -58,7 +58,7 @@ export default function SymbolicYieldSection() {
       <div className="mt-20 max-w-md mx-auto">
         <div className="rounded-xl border border-dashed border-gray-300 bg-gray-100 text-gray-500 p-8 text-center">
           <div className="text-2xl font-semibold mb-2">🎖️ Symbolic Badge Preview</div>
-          <p className="text-sm">Visual recognition for your impact — coming soon.</p>
+          <p className="text-sm">Symbolic recognition for your climate support — coming soon.</p>
         </div>
       </div>
     </section>

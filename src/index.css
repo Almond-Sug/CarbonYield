@@ -1,6 +1,20 @@
 @import "tailwindcss";
 @import "mapbox-gl/dist/mapbox-gl.css";
 
+@layer theme {
+  /* Define ripple keyframes */
+  @keyframes ripple {
+    0%   { transform: scale(0.2); opacity: 0.4; }
+    90%  { opacity: 0; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+
+  /* Attach keyframes to class utility */
+  .animate-ripple {
+    animation: ripple 2.4s ease-in-out infinite;
+  }
+}
+
 html, body {
   scroll-behavior: smooth;
   margin: 0;

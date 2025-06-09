@@ -11,12 +11,6 @@ export default function HeroSection() {
       <div className={styles.heroEarthFilter} />
       <div className={styles.heroOverlay} />
 
-        <img
-            src="/logo_carbonyield.png"
-            alt="CarbonYield Logo"
-            className={styles.heroEarthLogo}
-        />
-
       {/* Text Block */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -24,15 +18,17 @@ export default function HeroSection() {
         transition={{ duration: 0.8, ease: 'easeOut' }}
         className={styles.heroTextBlock}
       >
-
         <h1 className={`text-5xl sm:text-7xl font-extrabold tracking-tight mb-4 font-dm-sans text-white ${styles.heroShadowText}`}>
           Fund Climate.
           <br />
           Track Impact.
+          <br />
+          Repeat.
         </h1>
 
+
         <p className={`text-lg sm:text-xl font-medium text-white/90 mb-8 font-inter ${styles.heroShadowText}`}>
-          Back real carbon projects, see real impact, and earn symbolic rewards.
+          Back real climate projects and see your impact grow — with credits that let you support even more change.
         </p>
 
         <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
