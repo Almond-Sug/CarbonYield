@@ -1,6 +1,6 @@
 // Dashboard.tsx
 import ImpactEstimator from '../components/ImpactEstimator';
-import PortfolioChart from '../components/PortfolioChart';
+import ImpactOverview from '../components/ImpactOverview';
 import ImpactBadges from '../components/ImpactBadges';
 import ImpactMap from '../components/ImpactMap';
 import UseCreditsModal from '../components/UseCreditsModal';
@@ -58,7 +58,7 @@ export default function Dashboard() {
               <ImpactEstimator />
             </div>
             <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow hover:shadow-md transition-all">
-              <PortfolioChart />
+              <ImpactOverview />
             </div>
           </section>
 

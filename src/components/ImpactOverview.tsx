@@ -6,7 +6,7 @@ const data = [
   { date: 'May', credits: 42, co2: 3.2 },
 ];
 
-export default function PortfolioChart() {
+export default function ImpactOverview() {
   return (
     <div className="space-y-3">
       <h2 className="text-xl font-bold text-green-700 text-center">📊 Your Symbolic Impact Over Time</h2>
