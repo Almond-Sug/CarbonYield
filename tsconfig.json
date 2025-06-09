@@ -6,7 +6,9 @@
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "types": []
   },
   "include": ["vite-env.d.ts", "src"]
 }
