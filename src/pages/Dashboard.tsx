@@ -1,5 +1,5 @@
 import ImpactEstimator from '../components/ImpactEstimator';
-import PortfolioChart from '../components/PortfolioChart';
+import ImpactOverview from '../components/ImpactOverview';
 import ImpactBadges from '../components/ImpactBadges';
 import ImpactMap from '../components/ImpactMap';
 import { useState } from 'react';
@@ -58,7 +58,7 @@ export default function Dashboard() {
             </div>
             {/* Chart Card */}
             <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow hover:shadow-md transition-all">
-              <PortfolioChart />
+              <ImpactOverview />
             </div>
           </section>
 
