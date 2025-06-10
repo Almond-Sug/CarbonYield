@@ -39,7 +39,7 @@ export default function Navbar() {
           <img
             src="/Logo_Clear.png"
             alt="CarbonYield Logo"
-            className="w-9 h-9 object-contain"
+            className="w-12 h-12 object-contain"
           />
           <span className="text-xl sm:text-2xl font-bold text-green-700 tracking-tight font-dm-sans">
             CarbonYield

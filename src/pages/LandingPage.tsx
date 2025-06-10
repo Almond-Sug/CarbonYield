@@ -10,7 +10,7 @@
   import IntroSection from '../components/IntroSection';
   import FeatureOverviewSection from '../components/FeatureOverviewSection';
   import ProblemSection from '../components/ProblemSection';
-  import SolutionCycleSection from '../components/SolutionCycleSection';
+  import SolutionCycleIntro from '../components/SolutionCycleIntro';
 
   export default function LandingPage() {
     return (
@@ -28,27 +28,40 @@
           <IntroSection />
 
           {/* SOLUTION CYCLE */}
-          <SolutionCycleSection />
+          <SolutionCycleIntro />
 
-          {/* WHAT CARBONYIELD OFFERS */}
-          <FeatureOverviewSection />
-
-          {/* REDESIGN AS A HEADER FOR THE NARRATIVE HOW IT WORKS SECTION */}
-          <section className="mt-32 bg-white px-6 py-24 text-center max-w-5xl mx-auto space-y-10">
-            <h2 className="text-2xl sm:text-3xl font-bold text-green-800">
+          {/* NARRATIVE INTRO TO HOW IT WORKS */}
+          <section className="bg-gradient-to-b from-white to-green-50 px-6 py-24 sm:py-32 text-center max-w-5xl mx-auto space-y-10 transition-all duration-700">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+              className="text-2xl sm:text-3xl font-bold text-green-800"
+            >
               A Climate Platform That Keeps Giving — Even After You Do
-            </h2>
+            </motion.h2>
 
-            <p className="text-gray-700 text-sm sm:text-base max-w-3xl mx-auto font-inter">
-              When you support a carbon project on CarbonYield, you're not making a one-time donation —
-              you're joining an ongoing cycle. As the credits you helped fund are resold,
-              you receive Impact Credits that let you support more projects — without spending more.
-            </p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-gray-700 text-sm sm:text-base max-w-3xl mx-auto font-inter"
+            >
+              When you support a carbon project on CarbonYield, you're not making a one-time donation — 
+              you're joining an ongoing cycle. As the credits you helped fund are resold, 
+              you receive new Impact Credits to guide more projects — without needing to give again unless you choose to grow your impact even further.
+            </motion.p>
           </section>
+
             
 
           {/* HOW IT WORKS */}
           <HowItWorksSection />
+
+          {/* WHAT CARBONYIELD OFFERS */}
+          <FeatureOverviewSection />
 
           {/* IMPACT MAP */}
           <section className="py-28 bg-white px-6 sm:px-12 text-center space-y-10">
