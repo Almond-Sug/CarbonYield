@@ -6,7 +6,7 @@ import {
   addDoc,
   serverTimestamp
 } from "firebase/firestore";
-import { db } from "./firebase"; // we'll add db to firebase.ts in the next step
+import { db } from "./firebase"; // Firestore instance
 
 export async function getProjects() {
   try {
