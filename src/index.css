@@ -1,20 +1,46 @@
 @import "tailwindcss";
 @import "mapbox-gl/dist/mapbox-gl.css";
 
-@layer theme {
-  /* Define ripple keyframes */
-  @keyframes ripple {
-    0%   { transform: scale(0.2); opacity: 0.4; }
-    90%  { opacity: 0; }
-    100% { transform: scale(1.8); opacity: 0; }
-  }
+/* Define custom keyframes (global scope or any layer is valid) */
+@keyframes ripple {
+  0%   { transform: scale(0.2); opacity: 0.4; }
+  90%  { opacity: 0; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
 
-  /* Attach keyframes to class utility */
-  .animate-ripple {
-    animation: ripple 2.4s ease-in-out infinite;
+@keyframes subtleRipple {
+  0%   { transform: scale(0.6); opacity: 0.25; }
+  50%  { opacity: 0.15; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
+@layer utilities {
+  .animate-ripple {
+    animation: ripple 2.4s ease-in-out infinite;
+  }
+  .animate-subtleRipple {
+    animation: subtleRipple 4s ease-out infinite;
+  }
+  .bg-animated-gradient {
+    background: linear-gradient(270deg, #ffffff, #f0fdf4, #ffffff);
+    background-size: 400% 400%;
+    animation: gradientShift 30s ease infinite;
+  }
+}
+
+/* Global resets */
 html, body {
   scroll-behavior: smooth;
   margin: 0;

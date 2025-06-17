@@ -19,9 +19,9 @@ function DownArrow() {
 
 export default function IntroSection() {
   return (
-    <div className="relative w-full h-screen bg-gradient-to-b from-green-50 to-white flex items-center justify-center px-6 sm:px-16 z-30">
+    <div className="relative w-full min-h-[85vh] bg-gradient-to-b from-green-100 to-green-50 flex items-center justify-center px-6 sm:px-16 z-30">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-20 z-10">
-        {/* LEFT: Visual Stack (was on the right before) */}
+        {/* LEFT: Visual Stack */}
         <div className="relative w-full flex justify-center order-1 md:order-none">
           <div className="flex flex-col items-center space-y-6 relative scale-110 text-center">
             {/* Layer 1: Floating Impact Credit */}
@@ -70,7 +70,7 @@ export default function IntroSection() {
           </div>
         </div>
 
-        {/* RIGHT: Text Section (was on the left before) */}
+        {/* RIGHT: Text Section */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -79,15 +79,13 @@ export default function IntroSection() {
           className="space-y-6 text-center md:text-left"
         >
           <p className="uppercase text-sm text-green-600 tracking-wide font-medium">
-            Platform Overview
+            What Is CarbonYield?
           </p>
           <h2 className="text-3xl sm:text-5xl font-bold text-green-800 leading-tight">
-            A New Kind of Climate Platform
+            Where Climate Support Doesn’t End — It Regenerates
           </h2>
           <p className="text-gray-700 text-lg font-inter max-w-md mx-auto md:mx-0">
-            CarbonYield blends verified climate funding with symbolic participation.
-            You support real projects, track resale activity, and receive reusable Impact Credits —
-            with zero financial returns.
+            You fund real climate projects — and stay part of the story long after. With Impact Credits, your support echoes into future cycles. You’re not just offsetting — you’re helping shape what happens next.
           </p>
         </motion.div>
       </div>

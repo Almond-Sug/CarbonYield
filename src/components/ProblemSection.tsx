@@ -3,7 +3,7 @@ import { AlertCircle, EyeOff, Hourglass } from 'lucide-react';
 
 export default function ProblemSection() {
   return (
-    <div className="relative w-full h-screen bg-gradient-to-b from-white to-green-50 flex items-center justify-center px-6 sm:px-16 z-30">
+    <div className="relative w-full min-h-[85vh] bg-gradient-to-b from-green-50 to-green-100 flex items-center justify-center px-6 sm:px-16 z-30">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-20 z-10">
         {/* LEFT: Text */}
         <motion.div
@@ -14,34 +14,33 @@ export default function ProblemSection() {
           className="space-y-6 text-center md:text-left"
         >
           <p className="uppercase text-sm text-green-600 tracking-wide font-medium">
-            Why This Matters
+            Why Most Climate Giving Doesn’t Work
           </p>
           <h2 className="text-3xl sm:text-5xl font-bold text-green-800 leading-tight">
-            Traditional Climate Giving Falls Short
+            Millions Want to Help — But the System Keeps Them Out
           </h2>
           <p className="text-gray-700 text-lg font-inter max-w-md mx-auto md:mx-0">
-            Most donation platforms leave you in the dark. You fund a project… and that's it.
-            No updates. No clarity. No real connection to lasting impact.
+            Most climate platforms weren’t built for people like you — they end after one click, offer vague updates, or chase speculation. There’s no structured way to stay involved — or to see your support echo across future impact cycles.
           </p>
         </motion.div>
 
         {/* RIGHT: Pain Point Cards */}
         <div className="flex flex-col space-y-6">
-          {[
+          {[ 
             {
-              icon: <EyeOff className="w-6 h-6 text-green-700" />,
-              title: 'Lack of Visibility',
-              desc: 'You never really know where your money went — or if it worked.',
+              icon: <EyeOff className="w-6 h-6 text-green-700" />, 
+              title: 'No Way In',
+              desc: 'You care — but verified climate projects are locked behind brokers and private markets.',
             },
             {
-              icon: <AlertCircle className="w-6 h-6 text-green-700" />,
-              title: 'Greenwashing Risk',
-              desc: 'Even verified projects can get used in ways that distort climate claims.',
+              icon: <Hourglass className="w-6 h-6 text-green-700" />, 
+              title: 'One-and-Done',
+              desc: 'You give, and it’s over. No next step. No way to stay involved.',
             },
             {
-              icon: <Hourglass className="w-6 h-6 text-green-700" />,
-              title: 'One-Time Impact',
-              desc: 'Once you donate, the story ends — there’s no way to re-engage or scale it.',
+              icon: <AlertCircle className="w-6 h-6 text-green-700" />, 
+              title: 'Trust Issues',
+              desc: 'Speculative platforms make it hard to believe your support means anything real.',
             },
           ].map((item, i) => (
             <motion.div

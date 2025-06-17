@@ -93,7 +93,7 @@ export default function Step2Section() {
               </AnimatePresence>
             </div>
             <div className="w-full text-lg font-normal text-gray-700 mt-1">
-              You receive them after donating — and use them to symbolically guide future projects.
+              You receive symbolic Impact Credits as recognition for your contribution.
             </div>
           </div>
 
